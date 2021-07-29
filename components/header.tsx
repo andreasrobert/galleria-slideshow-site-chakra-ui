@@ -1,10 +1,14 @@
 import { Flex } from '@chakra-ui/react';
 
 
-export default function Home() {
+
+function Header() {    
   return (
     <>
-      
+  
+        
     </>
-  )
+  );
 }
+
+export default Header;
