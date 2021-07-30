@@ -8,7 +8,7 @@ function Header() {
     <>
     <Flex justify="space-between" align="center" borderBottom="1px solid black" pb="30px">
         <Image src="/assets/shared/logo.svg" alt="" width="170" height="48"/>
-        <Heading>start slideshow</Heading>
+        <Heading size="Link1">start slideshow</Heading>
 
     </Flex> 
     </>
