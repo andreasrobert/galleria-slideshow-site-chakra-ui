@@ -37,7 +37,7 @@ export const theme = extendTheme({
         Link1: {
           fontSize: "12px",
           lineHeight: "15px",
-          letterSpacing: "2.5px",
+          letterSpacing: "2.57px",
         },
         Link2: {
           fontSize: "9px",

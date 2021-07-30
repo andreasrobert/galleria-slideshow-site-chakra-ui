@@ -6,7 +6,7 @@ import Image from 'next/image'
 function Header() {    
   return (
     <>
-    <Flex justify="space-between" align="center" borderBottom="1px solid black" pb="30px">
+    <Flex justify="space-between" align="center" borderBottom="1px solid black" pb="30px" zIndex="3" mb="100px">
         <Image src="/assets/shared/logo.svg" alt="" width="170" height="48"/>
         <Heading size="Link1">start slideshow</Heading>
 

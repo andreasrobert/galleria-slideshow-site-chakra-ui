@@ -6,7 +6,7 @@ import Image from 'next/image'
 function SlideBar() {    
   return (
     <>
-    <Flex justify="space-between" align="center" borderTop="1px solid black" flexShrink={0} h="86px">
+    <Flex justify="space-between" align="center" borderTop="1px solid black" flexShrink={0} h="86px" mt="70px">
         <Box>
             <Heading size="H3">The Night Cafe</Heading>
             <Heading size="SubH2">Vincent van Gogh</Heading>

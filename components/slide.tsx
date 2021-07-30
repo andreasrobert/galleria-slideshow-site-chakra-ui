@@ -4,32 +4,33 @@ import Focus from "./focus";
 
 function Slide() {
   return (
-    <Flex justify="space-between" align="center" pb="30px" flexShrink={1} h="0" >
+    <Flex justify="space-between" align="center" py="20vh" h="0" >
       <Flex>
-        <Box>
+        <Box w="50vh">
           <Image
             src="/assets/the-night-cafe/hero-large.jpg"
             alt=""
             width="475"
             height="560"
+            layout="responsive"
           />
         </Box>
         <Box>
           <Flex
             justify="space-between"
             direction="column"
-            h="500"
+            h="65vh"
             pos="relative"
           >
             <ImageTitleCard>
               <Heading zIndex="2" size="H1">
-                The Night Cafe
+                The Night <br></br> Cafe
               </Heading>
-              <Heading zIndex="2" size="SubH1">
+              <Heading zIndex="2" size="SubH1" mt="4vh">
                 Vincent van Gogh
               </Heading>
             </ImageTitleCard>
-            <Box ml="30px">
+            <Box ml="4.8vh">
               <Image
                 src="/assets/the-night-cafe/artist.jpg"
                 alt=""
@@ -41,7 +42,7 @@ function Slide() {
         </Box>
       </Flex>
 
-      <Flex maxW="30vw" direction="column">
+      <Flex maxW="30vw" direction="column" >
         <Heading size="Display" pos="absolute" mt="-117px" ml="8px">
           1888
         </Heading>
@@ -84,9 +85,9 @@ const ImageTitleCard = (props: FlexProps) => (
       content: `""`,
       position: "absolute",
       width: "100%",
-      height: "302px",
+      height: "29vh",
       bg: "white",
-      ml: "-65px",
+      ml: "-9vh",
     }}
     {...props}
   />
