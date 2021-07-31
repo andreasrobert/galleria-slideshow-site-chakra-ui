@@ -23,16 +23,16 @@ export default function Gallery() {
   return (
     <>
       <Container
-        overflow="hidden"
+        // overflow="hidden"
         bg="white"
         pos="absolute"
         left="0"
         right="0"
         minH="100%"
         h="100%"
-        minW={["100%","100%","100%","100%","100%","1440"]}
+        minW={{base:"100%", xl:"1440"}}
         maxW="152vh"
-        p="2.1vh 40px 0 40px"
+        p={{base:"20px", mm:"2.1vh 40px 0 40px"}}
         d="flex"
         flexDir="column"
         justifyContent="space-between"
