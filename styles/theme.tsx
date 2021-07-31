@@ -1,4 +1,13 @@
 import { extendTheme } from "@chakra-ui/react";
+import { createBreakpoints } from "@chakra-ui/theme-tools"
+
+const breakpoints = createBreakpoints({
+  sm: "370px",
+  md: "780px",
+  lg: "960px",
+  xl: "1440px",
+})
+
 
 export const theme = extendTheme({
   components: {
@@ -9,40 +18,40 @@ export const theme = extendTheme({
       },
       sizes: {
         Display: {
-          fontSize: "200px",
-          lineHeight: "150px",
+          fontSize: "max(19.5vh, 200px)",
+          lineHeight: "15vh",
           opacity: "0.3",
         },
         H1: {
-          fontSize: "56px",
-          lineHeight: "64px",
+          fontSize: "max(6vh,6vh)",
+          lineHeight: "max(6.25vh,6.25vh)",
         },
         H2: {
           fontSize: "24px",
           lineHeight: "29px",
         },
         H3: {
-          fontSize: "18px",
-          lineHeight: "22px",
+          fontSize: "1.77vh",
+          lineHeight: "2.2vh",
         },
         SubH1: {
-          fontSize: "15px",
-          lineHeight: "19px",
+          fontSize: "max(1.5vh,1.5vh)",
+          lineHeight: "2vh",
           fontWeight: "400",
         },
         SubH2: {
-          fontSize: "13px",
-          lineHeight: "17px",
+          fontSize: "1.28vh",
+          lineHeight: "1.7vh",
         },
         Link1: {
-          fontSize: "12px",
-          lineHeight: "15px",
-          letterSpacing: "2.57px",
+          fontSize: "1.5vh",
+          lineHeight: "2vh",
+          letterSpacing: "0.3vh",
         },
         Link2: {
-          fontSize: "9px",
+          fontSize: "max(0.9vh, 9px)",
           lineHeight: "11px",
-          letterSpacing: "2px",
+          letterSpacing: "0.18vh",
         },
         Body: {
           fontSize: "14px",
@@ -63,8 +72,8 @@ export const theme = extendTheme({
       },
       sizes: {
         Body: {
-            fontSize: "14px",
-            lineHeight: "28px",
+            fontSize: "max(1.37vh, 14px)",
+            lineHeight: "max(2.8vh, 28px)",
           },
       },
     },
@@ -77,4 +86,6 @@ export const theme = extendTheme({
   colors: {
     red: "green",
   },
+   
+  breakpoints
 });

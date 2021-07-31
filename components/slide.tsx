@@ -1,15 +1,26 @@
 import { Flex, Heading, Text, Box, FlexProps } from "@chakra-ui/react";
 import Image from "next/image";
 import Focus from "./focus";
+import { data } from "./data";
 
-function Slide() {
+function Slide(props: { slide: number }) {
+  
+  let before = props.slide - 1
+  let after = props.slide + 1
+  if (before <= -1) {
+    before = 14
+  }
+  if (after >= 15) {
+    after = 0
+  }
+
   return (
-    <Flex justify="space-between" align="center" py="20vh" h="0" >
-      <Flex>
-        <Box w="50vh">
+    <Flex justify="space-between" align="center" py="20vh" h="0">
+      <Flex mr="15vh">
+        <Box w={["30vh","30vh","30vh","30vh", '45vh', '50vh']}>
           <Image
-            src="/assets/the-night-cafe/hero-large.jpg"
-            alt=""
+            src={`${data[props.slide].images.hero.large}`}
+            alt="hero"
             width="475"
             height="560"
             layout="responsive"
@@ -22,47 +33,74 @@ function Slide() {
             h="65vh"
             pos="relative"
           >
-            <ImageTitleCard>
-              <Heading zIndex="2" size="H1">
-                The Night <br></br> Cafe
-              </Heading>
-              <Heading zIndex="2" size="SubH1" mt="4vh">
-                Vincent van Gogh
-              </Heading>
-            </ImageTitleCard>
-            <Box ml="4.8vh">
+            <Box maxH="fit-content" pos="relative">
+              <ImageTitleCard>
+                <Heading zIndex="2" size="H1" w="35vh">
+                  {data[props.slide].name}
+                </Heading>
+                <Heading zIndex="2" size="SubH1" mt="4vh">
+                  {data[props.slide].artist.name}
+                </Heading>
+              </ImageTitleCard>
+            </Box>
+            <Box ml="4.8vh" w="13vh">
+              
               <Image
-                src="/assets/the-night-cafe/artist.jpg"
+                src={`${data[props.slide].artist.image}`}
                 alt=""
                 width="128"
                 height="128"
+                layout="responsive"
               />
             </Box>
           </Flex>
         </Box>
       </Flex>
 
-      <Flex maxW="30vw" direction="column" >
-        <Heading size="Display" pos="absolute" mt="-117px" ml="8px">
-          1888
+      <Flex direction="column" pos="relative" maxW="37vw">
+        <Heading size="Display" pos="absolute" mt="-11.7vh" right="0">
+          {data[props.slide].year}
         </Heading>
-        <Text size="Body">
-          The Night Café (French: Le Café de nuit) is an oil painting created by
-          Dutch artist Vincent van Gogh in September 1888 in Arles. Its title is
-          inscribed lower right beneath the signature. The painting is owned by
-          Yale University and is currently held at the Yale University Art
-          Gallery in New Haven, Connecticut. The interior depicted is the Café
-          de la Gare, 30 Place Lamartine, run by Joseph-Michel Ginoux and his
-          wife Marie, who in November 1888 posed
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
-          for Van Gogh's and Gauguin's Arlésienne; a bit later, Joseph Ginoux
-          evidently posed for both artists, too.
+        <Text size="Body" pr="12vh">
+          {data[props.slide].description}
         </Text>
-
-        <Text as="u" size="Link2">
-          GO TO SOURCE
-        </Text>
+        <a href={data[props.slide].source}>
+          <Heading as="u" size="Link2" mt="7vh">
+            GO TO SOURCE
+          </Heading>
+        </a>
       </Flex>
+
+      <Box opacity="0" pos="absolute" pointerEvents="none">
+                <Image
+                  width="475"
+                  height="560"
+                  layout="responsive"
+                  src={`${data[after].images.hero.large}`}
+                  alt="dummy"
+                />
+                <Image
+                  src={`${data[after].artist.image}`}
+                  alt=""
+                  width="128"
+                  height="128"
+                  layout="responsive"
+                />
+                <Image
+                  width="475"
+                  height="560"
+                  layout="responsive"
+                  src={`${data[before].images.hero.large}`}
+                  alt="dummy"
+                />
+                <Image
+                  src={`${data[before].artist.image}`}
+                  alt=""
+                  width="128"
+                  height="128"
+                  layout="responsive"
+                />
+              </Box>
     </Flex>
   );
 }
@@ -72,23 +110,23 @@ export default Slide;
 const ImageTitleCard = (props: FlexProps) => (
   <Flex
     direction="column"
-    // _after={{
-    //     content: `""`,
-    //     position: "absolute",
-    //     width: "65px",
-    //     height: "302px",
-    //     bg: "white",
-    //     ml: "-65px",
-    //     // opacity: "0.6",
-    // }}
-    _before={{
+    _after={{
       content: `""`,
       position: "absolute",
       width: "100%",
-      height: "29vh",
+      height: "calc(100% + 7vh)",
       bg: "white",
-      ml: "-9vh",
+      ml: "-8vh",
+      // opacity: "0.6",
     }}
+    // _before={{
+    //   content: `""`,
+    //   position: "absolute",
+    //   width: "100%",
+    //   height: "27vh",
+    //   bg: "white",
+    //   ml: "-9vh",
+    // }}
     {...props}
   />
 );

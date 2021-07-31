@@ -1,9 +1,13 @@
-import { Flex, Container, Box, BoxProps } from "@chakra-ui/react";
+import { Flex, Container, SlideFade,Box, BoxProps } from "@chakra-ui/react";
 import { useState } from "react";
 import Header from "../components/header";
 import Slide from "../components/slide";
 import SlideBar from "../components/slideBar";
+import { useDisclosure } from "@chakra-ui/hooks";
 import { motion, AnimatePresence } from "framer-motion";
+import { data } from "../components/data";
+
+const MotionBox = motion<BoxProps>(Box);
 
 
 export default function Gallery() {
@@ -20,26 +24,11 @@ export default function Gallery() {
     setSlide([0, direction]);
   }
 
+
   return (
     <>
-      <Container
-        overflow="hidden"
-        bg="white"
-        pos="absolute"
-        left="0"
-        right="0"
-        minH="100%"
-        h="100%"
-        minW={["100%","100%","100%","100%","100%","1440"]}
-        maxW="152vh"
-        p="2.1vh 40px 0 40px"
-        d="flex"
-        flexDir="column"
-        justifyContent="space-between"
-      >
-        <Header></Header>
-        <AnimatePresence initial={false} custom={direction}>
-          <Box>
+      <AnimatePresence initial={false} custom={direction}>
+          <Box mt="400px">
         <motion.div
         key={slide}
         custom={direction}
@@ -69,12 +58,15 @@ export default function Gallery() {
         
         </Box>
       </AnimatePresence>
-        <SlideBar paginate={(id) => paginate(id)} slide={slide}></SlideBar>
-      </Container>
+      <div className="next" onClick={() => paginate(1)}>
+        {"‣"}
+      </div>
+      <div className="prev" onClick={() => paginate(-1)}>
+        {"‣"}
+      </div>
     </>
   );
 }
-
 
 const variants = {
   enter: (direction: number) => {
@@ -97,7 +89,6 @@ const variants = {
   },
 };
 
-const MotionBox = motion<BoxProps>(Box);
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
