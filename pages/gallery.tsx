@@ -4,9 +4,35 @@ import Header from "../components/header";
 import Slide from "../components/slide";
 import SlideBar from "../components/slideBar";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from 'next/router'
+import { GetServerSideProps } from "next";
+import Focus from "../components/focus";
 
+export const getServerSideProps: GetServerSideProps = async(ctx) =>{
+  let start = 0
+  if(ctx.query.foo){
+    console.log("helo" + ctx.query.foo)
+  }
+  return {
+    props:{start}
+  }
+  // const router = useRouter()
+  // const  pid  = router.query
+  // let start = 0
+  // if(Number(pid.foo)>=0 && Number(pid.foo) <=14){
+  //   console.log("Hello")
+  //   start = Number(pid.foo)
+  // }
+}
 
 export default function Gallery() {
+
+  const [popUp, setPopUp] = useState(false)
+
+  const handlePopUp = () =>{
+    setPopUp(prev => !prev);
+};
+  
   const [[slide, direction], setSlide] = useState([0, 0]);
 
   const paginate = (newDirection: number) => {
@@ -22,8 +48,10 @@ export default function Gallery() {
 
   return (
     <>
+        <Focus slide={slide} handlePopUp={handlePopUp} popUp={popUp}></Focus>
+
       <Container
-        // overflow="hidden"
+        overflow={{base:"auto",sm:"hidden"}}
         bg="white"
         pos="absolute"
         left="0"
@@ -37,7 +65,7 @@ export default function Gallery() {
         flexDir="column"
         justifyContent="space-between"
       >
-        <Header></Header>
+        <Header show={true}></Header>
         <AnimatePresence initial={false} custom={direction}>
           <Box>
         <motion.div
@@ -64,7 +92,7 @@ export default function Gallery() {
           }
         }}
         >
-            <Slide slide={slide}></Slide>
+            <Slide slide={slide} handlePopUp={handlePopUp}></Slide>
         </motion.div>
         
         </Box>

@@ -1,7 +1,8 @@
 import { Flex, Heading } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 
-function Header() {
+function Header(props: { show: boolean }) {
   return (
     <>
       <Flex
@@ -10,7 +11,7 @@ function Header() {
         borderBottom="1px solid black"
         pb="2.5vh"
         zIndex="3"
-        mb={{sm:"100px"}}
+        mb={{ sm: "100px" }}
         // bg={{
         //   ms: "lightsalmon",
         //   mm: "red",
@@ -25,7 +26,19 @@ function Header() {
         // }}
       >
         <Image src="/assets/shared/logo.svg" alt="" width="170" height="48" />
-        <Heading size="Link1">start slideshow</Heading>
+        {props.show ? (
+          <Link href="/" passHref>
+            <Heading cursor="pointer" size="Link1">
+              stop slideshow
+            </Heading>
+          </Link>
+        ) : (
+          <Link href="/gallery" passHref>
+            <Heading cursor="pointer" size="Link1">
+              start slideshow
+            </Heading>
+          </Link>
+        )}
       </Flex>
     </>
   );

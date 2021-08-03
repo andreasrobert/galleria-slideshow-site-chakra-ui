@@ -34,7 +34,7 @@ export const theme = extendTheme({
           lineHeight: {base:"29px",ms:"8.7vw" ,sm:"max(6.25vh,6.25vh)"},
         },
         H2: {
-          fontSize: "24px",
+          fontSize: {base:"15px",ms:"24px"},
           lineHeight: "29px",
         },
         H3: {
@@ -63,6 +63,7 @@ export const theme = extendTheme({
         Body: {
           fontSize: "14px",
           lineHeight: "28px",
+          letterSpacing: "4px",
         },
 
         // };

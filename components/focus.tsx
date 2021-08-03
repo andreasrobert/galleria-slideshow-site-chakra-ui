@@ -1,13 +1,32 @@
-import { Container, Heading } from "@chakra-ui/react";
-import Image from "next/image";
+import { Box, Heading, Flex, Image } from "@chakra-ui/react";
+import { data } from "./data";
 
-function Focus() {
+function Focus(props:{slide:number ; handlePopUp:()=>void; popUp:boolean}) {
   return (
     <>
-      <Container pos="fixed" w="100vw" h="100vw"zIndex="2" bg="blackAlpha.700" top="0" right="0" left="0">
-        <Heading>CLOSE</Heading>
-        <Image src="/assets/the-night-cafe/gallery.jpg" alt="" width="670" height="562"/>
-      </Container>
+  
+
+  <Flex
+        pos="fixed"
+        w="100%"
+        h="100%"
+        zIndex="4"
+        bg="blackAlpha.800"
+        top="0"
+        right="0"
+        justifyContent="center"
+        alignItems="center"
+        onClick={props.handlePopUp}
+        d={props.popUp?"flex":"none"}
+      >
+        <Box maxW={{base:"80vw",sm:"45vw"}} pos="relative" onClick={(e)=>e.stopPropagation()} >
+        <Heading size="Body" pos="absolute" top="-45px" right="0" color="white" cursor="pointer" onClick={props.handlePopUp}>CLOSE</Heading>
+        <Image
+          src={data[props.slide].images.gallery}
+          alt=""
+        />
+        </Box>
+      </Flex>
     </>
   );
 }
