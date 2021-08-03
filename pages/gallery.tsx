@@ -1,35 +1,15 @@
-import { Flex, Container, Box, BoxProps } from "@chakra-ui/react";
+import { Container, Box, BoxProps } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Header from "../components/header";
 import Slide from "../components/slide";
 import SlideBar from "../components/slideBar";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
-import { GetServerSideProps } from "next";
 import Focus from "../components/focus";
-
-// export const getServerSideProps: GetServerSideProps = async(ctx) =>{
-//   let start = 0
-//   if(ctx.query.foo){
-//     console.log("helo" + ctx.query.foo)
-//   }
-//   return {
-//     props:{start}
-//   }
-//   // const router = useRouter()
-//   // const  pid  = router.query
-//   // let start = 0
-//   // if(Number(pid.foo)>=0 && Number(pid.foo) <=14){
-//   //   console.log("Hello")
-//   //   start = Number(pid.foo)
-//   // }
-// }
 
 export default function Gallery() {
   const router = useRouter();
   const pid = router.query;
-
-  // console.log(start);
 
   const [popUp, setPopUp] = useState(false);
 
@@ -49,8 +29,7 @@ export default function Gallery() {
     })();
 
     setSlide([start, 0]);
-  }, [pid.foo])
-
+  }, [pid.foo]);
 
   const paginate = (newDirection: number) => {
     setSlide([slide + newDirection, newDirection]);
