@@ -12,18 +12,6 @@ function Header(props: { show: boolean }) {
         pb="2.5vh"
         zIndex="3"
         mb={{ sm: "100px" }}
-        // bg={{
-        //   ms: "lightsalmon",
-        //   mm: "red",
-        //   mb: "darkred",
-        //   ts: "lightgreen",
-        //   tm: "green",
-        //   tb: "darkgreen",
-        //   sm: "lightblue",
-        //   md: "blue",
-        //   lg: "darkblue",
-        //   xl: "black",
-        // }}
       >
         <Image src="/assets/shared/logo.svg" alt="" width="170" height="48" />
         {props.show ? (

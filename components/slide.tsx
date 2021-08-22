@@ -8,8 +8,7 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { data } from "./data";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 
 function Slide(props: { slide: number; handlePopUp: () => void }) {
   let before = props.slide - 1;

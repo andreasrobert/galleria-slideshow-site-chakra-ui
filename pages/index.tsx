@@ -13,7 +13,7 @@ import { motion, Variants } from "framer-motion";
 
 export default function HomePage() {
   const MotionBox = motion<BoxProps>(Box);
- 
+
   return (
     <>
       <Container bg="white" minH="100" maxW="1440" p="20px 40px 30px 40px">
@@ -84,6 +84,6 @@ const variants: Variants = {
   visible: (custom) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: Math.random() * (1 - 0.5 + 1) + 0.1 , duration: 2 },
+    transition: { delay: Math.random() * (1 - 0.5 + 1) + 0.1, duration: 2 },
   }),
 };
