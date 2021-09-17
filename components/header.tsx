@@ -16,13 +16,13 @@ function Header(props: { show: boolean }) {
         <Image src="/assets/shared/logo.svg" alt="" width="170" height="48" />
         {props.show ? (
           <Link href="/" passHref>
-            <Heading cursor="pointer" size="Link1">
+            <Heading cursor="pointer" size="Link1" textAlign="end">
               stop slideshow
             </Heading>
           </Link>
         ) : (
           <Link href="/gallery" passHref>
-            <Heading cursor="pointer" size="Link1">
+            <Heading cursor="pointer" size="Link1" textAlign="end">
               start slideshow
             </Heading>
           </Link>

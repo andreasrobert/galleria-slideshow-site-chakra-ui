@@ -22,7 +22,6 @@ export default function Gallery() {
   useEffect(() => {
     const start = (() => {
       if (Number(pid.foo) >= 0 && Number(pid.foo) <= 14) {
-        console.log("Hello", pid.foo);
         return Number(pid.foo);
       }
       return 0;

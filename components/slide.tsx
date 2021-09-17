@@ -5,8 +5,10 @@ import {
   Box,
   FlexProps,
   BoxProps,
+  Image,
+  AspectRatio,
 } from "@chakra-ui/react";
-import Image from "next/image";
+import NextImage from "next/image";
 import { data } from "./data";
 import { motion } from "framer-motion";
 
@@ -37,45 +39,43 @@ function Slide(props: { slide: number; handlePopUp: () => void }) {
             pos="relative"
           >
             <Box
-            pos="relative"
-             _after={{
-              cursor:"pointer",
-              color:"white",
-              top:{base:"0", sm:"initial"},
-              bottom:"0",
-              textAlign:"center",
-              lineHeight:"41.5px",
-              fontSize:"10px",
-              letterSpacing:"2.3px",
-              content: `"VIEW IMAGE"`,
-              backgroundImage:"url('/assets/shared/icon-view-image.svg')",
-              backgroundRepeat:"no-repeat",
-              backgroundPositionY:"center",
-              position: "absolute",
-              width: "152px",
-              height: "40px",
-              ml:{base:"1.3vh", sm:"3vh"},
-              my:{base:"-0.5vh", sm:"1vh"},
-            }}
+              pos="relative"
+              _after={{
+                cursor: "pointer",
+                color: "white",
+                top: { base: "0", sm: "initial" },
+                bottom: "0",
+                textAlign: "center",
+                lineHeight: "41.5px",
+                fontSize: "10px",
+                letterSpacing: "2.3px",
+                content: `"VIEW IMAGE"`,
+                backgroundImage: "url('/assets/shared/icon-view-image.svg')",
+                backgroundRepeat: "no-repeat",
+                backgroundPositionY: "center",
+                position: "absolute",
+                width: "152px",
+                height: "40px",
+                ml: { base: "1.3vh", sm: "3vh" },
+                my: { base: "-0.5vh", sm: "1vh" },
+              }}
             >
-            <Image
-              src={`${data[props.slide].images.hero.large}`}
-              alt="hero"
-              width="475"
-              height="560"
-              layout="responsive"
-            />
+              <Image
+                src={`${data[props.slide].images.hero.large}`}
+                alt="hero"
+              />
             </Box>
           </Box>
           <Box
             w="100%"
             d={{ base: "block", ts: "none" }}
             pos="relative"
-            pointerEvents="none"
+            onClick={props.handlePopUp}
           >
             <Heading
               pos="absolute"
               bottom="0px"
+              left="-0.7px"
               p={{ base: "1vh 1vh 0 1vh", mm: "3vh 3vh 0 3vh" }}
               w="80%"
               zIndex="3"
@@ -85,34 +85,33 @@ function Slide(props: { slide: number; handlePopUp: () => void }) {
               {data[props.slide].name}
             </Heading>
             <Box
-            pos="relative"
-             _after={{
-              cursor:"pointer",
-              color:"white",
-              top:{base:"0", sm:"initial"},
-              bottom:"0",
-              textAlign:"center",
-              lineHeight:"41.5px",
-              fontSize:"10px",
-              letterSpacing:"2.3px",
-              content: `"VIEW IMAGE"`,
-              backgroundImage:"url('/assets/shared/icon-view-image.svg')",
-              backgroundRepeat:"no-repeat",
-              backgroundPositionY:"center",
-              position: "absolute",
-              width: "152px",
-              height: "40px",
-              ml:"1.3vh",
-              my:"-0.5vh",
-            }}
+              pos="relative"
+              _after={{
+                cursor: "pointer",
+                color: "white",
+                top: { base: "0", sm: "initial" },
+                bottom: "0",
+                textAlign: "center",
+                lineHeight: "41.5px",
+                fontSize: "10px",
+                letterSpacing: "2.3px",
+                content: `"VIEW IMAGE"`,
+                backgroundImage: "url('/assets/shared/icon-view-image.svg')",
+                backgroundRepeat: "no-repeat",
+                backgroundPositionY: "center",
+                position: "absolute",
+                width: "152px",
+                height: "40px",
+                ml: "1.3vh",
+                my: "-0.5vh",
+                zIndex: 10,
+              }}
             >
-            <Image
-              src={`${data[props.slide].images.hero.small}`}
-              alt="hero"
-              width="327"
-              height="280"
-              layout="responsive"
-            />
+              <Image
+                src={`${data[props.slide].images.hero.small}`}
+                alt="hero"
+                pointerEvents="none"
+              />
             </Box>
           </Box>
           <Box>
@@ -152,7 +151,7 @@ function Slide(props: { slide: number; handlePopUp: () => void }) {
                 mt={{ base: "3.2vh", ts: "6vh", sm: "0px" }}
                 mb={{ base: "7vh", ts: "0px" }}
               >
-                <Image
+                <NextImage
                   src={`${data[props.slide].artist.image}`}
                   alt=""
                   width="128"
@@ -210,58 +209,6 @@ function Slide(props: { slide: number; handlePopUp: () => void }) {
             </Box>
           </Flex>
         </MotionBox>
-
-        <Box opacity="0" pos="absolute" pointerEvents="none">
-          <Box d={{ base: "none", ts: "block" }}>
-            <Image
-              width="475"
-              height="560"
-              layout="responsive"
-              src={`${data[after].images.hero.large}`}
-              alt="dummy"
-            />
-            <Image
-              width="475"
-              height="560"
-              layout="responsive"
-              src={`${data[before].images.hero.large}`}
-              alt="dummy"
-            />
-          </Box>
-
-          <Box d={{ base: "block", ts: "none" }}>
-            <Image
-              width="327"
-              height="280"
-              layout="responsive"
-              src={`${data[after].images.hero.small}`}
-              alt="dummy"
-            />
-            <Image
-              width="327"
-              height="280"
-              layout="responsive"
-              src={`${data[before].images.hero.small}`}
-              alt="dummy"
-            />
-          </Box>
-
-          {/* <Image
-          src={`${data[after].artist.image}`}
-          alt=""
-          width="128"
-          height="128"
-          layout="responsive"
-        />
-
-        <Image
-          src={`${data[before].artist.image}`}
-          alt=""
-          width="128"
-          height="128"
-          layout="responsive"
-        /> */}
-        </Box>
       </Flex>
     </>
   );
@@ -282,14 +229,6 @@ const ImageTitleCard = (props: FlexProps) => (
       bg: "white",
       ml: { base: "-6vh", sm: "-8vh" },
     }}
-    // _before={{
-    //   content: `""`,
-    //   position: "absolute",
-    //   width: "100%",
-    //   height: "27vh",
-    //   bg: "white",
-    //   ml: "-9vh",
-    // }}
     {...props}
   />
 );

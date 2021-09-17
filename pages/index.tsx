@@ -70,7 +70,6 @@ export default function HomePage() {
           ))}
         </Box>
 
-        {/* console.log(id.images.thumbnail) */}
       </Container>
     </>
   );
